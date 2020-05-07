@@ -47,13 +47,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		//http.csrf().disable();
+		http.csrf().disable();
 		
-		http.authorizeRequests()
+		/*http.authorizeRequests()
 		// URLs matching for access rights
-		.antMatchers("/").permitAll()
-		.antMatchers("/login").permitAll()
-		.antMatchers("/register").permitAll()
+		//.antMatchers("/").permitAll()
+		//.antMatchers("/login").permitAll()
+		//.antMatchers("/register").permitAll()
 		.antMatchers("/home/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
 		.anyRequest().authenticated()
 		.and()
@@ -70,7 +70,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/").and()
 		.exceptionHandling()
-		.accessDeniedPage("/access-denied");
+		.accessDeniedPage("/access-denied");*/
 		
 	}
 	

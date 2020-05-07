@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "auth_user")
@@ -22,12 +26,14 @@ public class User {
 	@Column(name = "auth_user_id")
 	private int id;
 
+	
 	@Column(name = "first_name")
 	private String name;
 
+	
 	@Column(name = "last_name")
 	private String lastName;
-
+	
 	@Column(name = "email")
 	private String email;
 
@@ -106,6 +112,12 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", email=" + email + ", password="
+				+ password + ", mobile=" + mobile + ", status=" + status + ", roles=" + roles + "]";
 	}
 	
 
