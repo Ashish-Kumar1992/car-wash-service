@@ -27,11 +27,12 @@ public class FacebookController {
 		this.connectionRepository = connectionRepository;
 	}
 
-	@GetMapping
+	@PostMapping
 	public String getfacebookFeeds(Model model) {
 		
-		System.out.println("=====Controller ======");
+		System.out.println("=====Controller  getfacebookFeeds ======");
 		if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
+			System.out.println("=====Controller Facebook======");
 			return "redirect:/connect/facebook";
 		}
 		PagedList<Post> posts = facebook.feedOperations().getPosts();
