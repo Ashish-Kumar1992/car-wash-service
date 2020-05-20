@@ -17,7 +17,7 @@ import com.cap.car.wash.model.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	Optional<User> findByEmail(String email);
-	User findByEmailAndPassword(String email);
+	//User findByEmailAndPassword(String email);
 	
 	@Transactional
 	@Modifying
