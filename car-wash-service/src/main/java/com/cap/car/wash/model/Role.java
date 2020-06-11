@@ -1,49 +1,39 @@
 package com.cap.car.wash.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "auth_role")
+@Table(name = "roles")
 public class Role {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "auth_role_id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-	@Column(name = "role_name")
-	private String role;
+	@Enumerated(EnumType.STRING)
+	@Column(length = 20)
+	private ERole name;
 
-	@Column(name = "role_desc")
-	private String desc;
+	public Role() {
 
-	public int getId() {
+	}
+
+	public Role(ERole name) {
+		this.name = name;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getRole() {
-		return role;
+	public ERole getName() {
+		return name;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setName(ERole name) {
+		this.name = name;
 	}
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-	
-	
 }

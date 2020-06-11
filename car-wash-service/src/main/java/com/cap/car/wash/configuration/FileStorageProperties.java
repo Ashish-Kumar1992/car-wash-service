@@ -2,7 +2,7 @@ package com.cap.car.wash.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import com.cap.car.wash.appconstants.AppConstants;
+import com.cap.car.wash.util.AppConstants;
 
 @ConfigurationProperties(prefix=AppConstants.FILE_PROPERTIES_PREFIX)
 public class FileStorageProperties {

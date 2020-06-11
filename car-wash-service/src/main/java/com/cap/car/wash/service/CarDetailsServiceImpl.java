@@ -1,5 +1,7 @@
 package com.cap.car.wash.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,12 @@ public class CarDetailsServiceImpl implements CarDetailsService{
 	@Override
 	public CarDetails createCar(CarDetails cardetails) {
 		return carRepository.save(cardetails);
+	}
+
+
+	@Override
+	public Optional<CarDetails> getCarDetail(Long customercarid) {
+		return carRepository.findById(customercarid);
 	}
 
 }

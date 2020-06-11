@@ -12,6 +12,8 @@ import java.nio.file.StandardCopyOption;
 
 import javax.imageio.ImageIO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -19,14 +21,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cap.car.wash.appconstants.AppConstants;
+import com.cap.car.wash.util.AppConstants;
 import com.cap.car.wash.configuration.FileStorageProperties;
+import com.cap.car.wash.controller.AuthenticationController;
 import com.cap.car.wash.exception.FileStorageException;
 import com.cap.car.wash.exception.MyFileNotFoundException;
 
 
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
+	
+	public static final Logger LOGGER= LoggerFactory.getLogger(FileStorageServiceImpl.class);
 	
 	private final Path fileStorageLocation;
 	
@@ -49,6 +54,11 @@ public class FileStorageServiceImpl implements FileStorageService {
 		
 		File f = new File(AppConstants.TEMP_DIR+file.getOriginalFilename());
 		
+		LOGGER.info("----- create image Controller File ---------" +f.toString());
+		LOGGER.info("----- create image Controller File  1 ---------" +file.toString());
+		
+		
+		
 		 	f.createNewFile();
 			FileOutputStream fout = new FileOutputStream(f);
 			fout.write(file.getBytes());
@@ -56,11 +66,11 @@ public class FileStorageServiceImpl implements FileStorageService {
 			 BufferedImage image = ImageIO.read(f);
 		   int height = image.getHeight();
 		   int width = image.getWidth();
-		   if(width>300 || height>300) {
+		   /*if(width>300 || height>300) {
 			   if(f.exists())
 				   f.delete();
 			   throw new FileStorageException(AppConstants.INVALID_FILE_DIMENSIONS);
-		   }
+		   }*/
 		
 		   if(f.exists())
 			   f.delete();
